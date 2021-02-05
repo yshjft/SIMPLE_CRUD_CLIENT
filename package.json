@@ -24,7 +24,6 @@
     }
   },
   "lint-staged": {
-    "**/*.less": "stylelint --syntax less --fix",
     "{src,test}/**/*.{js,jsx,tsx,ts,json}": [
       "eslint --fix",
       "prettier --write",
