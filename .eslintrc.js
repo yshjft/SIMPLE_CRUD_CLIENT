@@ -6,6 +6,7 @@ module.exports = {
   },
   extends: ['eslint:recommended', 'airbnb', 'prettier/react', 'plugin:prettier/recommended'],
   rules: {
+    'import/prefer-default-export': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/jsx-filename-extension': [
       'error',
