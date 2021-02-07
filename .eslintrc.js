@@ -15,6 +15,8 @@ module.exports = {
       {
         extensions: ['.js', '.jsx']
       }
-    ]
+    ],
+    'no-unused-vars': 1,
+    'no-param-reassign': 0
   }
 }

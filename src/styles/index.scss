@@ -36,13 +36,12 @@ body,
     justify-content: center;
     align-items: center;
   }
-
   .footer {
+    height: 100px;
     margin-top: auto;
     padding: 1%;
     display: flex;
     justify-content: center;
-    align-items: center;
     border-top: 1px solid silver;
     .title {
       font-weight: bold;
@@ -78,5 +77,40 @@ body,
     .writer {
       font-weight: bold;
     }
+  }
+}
+
+.inputArea {
+  text-align: center;
+  .title {
+    margin: 20px;
+    font-weight: bold;
+    font-size: 35px;
+  }
+  .inputItem {
+    margin: 20px;
+    input {
+      height: 25px;
+      width: 500px;
+    }
+    textArea {
+      width: 500px;
+      height: 450px;
+      resize: none;
+    }
+  }
+  button {
+    padding: 8px;
+    border: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 30px;
+    color: white;
+    background-color: black;
+  }
+  .warning {
+    display: none;
+    margin-top: 10px;
+    color: red;
   }
 }

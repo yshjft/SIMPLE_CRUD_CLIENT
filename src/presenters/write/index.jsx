@@ -1,11 +1,14 @@
-import React from 'react'
+import React, {forwardRef} from 'react'
+import InputForPost from '../../component/InputArea/InputArea'
 
-const WritePresenter = () => {
+const WritePresenter = forwardRef((props, ref) => {
+  const {handleSubmit} = props
+
   return (
     <div>
-      <div>Write page</div>
+      <InputForPost ref={ref} handleSubmit={handleSubmit} />
     </div>
   )
-}
+})
 
 export default WritePresenter
