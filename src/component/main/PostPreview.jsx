@@ -1,12 +1,14 @@
 import React from 'react'
 
-const PostPreview = () => {
+const PostPreview = (props) => {
+  const {post, handleClick} = props
+
   return (
-    <div className="postPreview">
-      <div className="title">제목(TITLE)</div>
+    <div onClick={() => handleClick(post.id)} className="postPreview">
+      <div className="title">{post.title}</div>
       <div className="postInfo">
-        <div className="date">yyyy년 mm월 dd일</div>
-        <div className="writer">작성자(WRITER)</div>
+        <div className="date">{post.date}</div>
+        <div className="writer">{post.writer}</div>
       </div>
     </div>
   )
