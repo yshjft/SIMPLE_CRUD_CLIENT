@@ -8,6 +8,8 @@ module.exports = {
   rules: {
     'import/prefer-default-export': 'off',
     'react/react-in-jsx-scope': 'off',
+    'react/no-array-index-key': 'off',
+    'react/prop-types': 'off',
     'react/jsx-filename-extension': [
       'error',
       {

@@ -10,12 +10,73 @@ body,
   display: flex;
   flex-direction: column;
   .header {
-    background-color: blue;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 5px 5px silver;
+    padding: 1%;
+    .title {
+      font-weight: bold;
+      font-size: 30px;
+    }
+    .headerItem {
+      margin-left: 10px;
+      font-weight: bold;
+      font-size: 20px;
+      color: black;
+      text-decoration: none;
+    }
+    .activeHeaderItem {
+      font-size: 25px;
+    }
   }
+  .layout {
+    margin: 1% 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .footer {
     margin-top: auto;
-    background-color: red;
+    padding: 1%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid silver;
+    .title {
+      font-weight: bold;
+      font-size: 30px;
+    }
+  }
+}
+
+.posts {
+  width: 100%;
+  height: 100%;
+}
+
+.postPreview {
+  margin: 3%;
+  padding: 2%;
+  border: 1px solid silver;
+  border-radius: 10px;
+  .title {
+    margin: 4px;
+    font-weight: bold;
+    font-size: 30px;
+  }
+  .postInfo {
+    margin: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .date {
+      font-weight: bold;
+      color: silver;
+    }
+    .writer {
+      font-weight: bold;
+    }
   }
 }

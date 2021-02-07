@@ -4,7 +4,7 @@ import '../../styles/index.scss'
 const Footer = () => {
   return (
     <div className="footer">
-      <div>SIMPLE CRUD</div>
+      <div className="title">SIMPLE CRUD</div>
     </div>
   )
 }

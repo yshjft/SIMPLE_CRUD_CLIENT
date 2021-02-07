@@ -1,7 +1,8 @@
 import React from 'react'
+import ReadContainer from './ReadContainer'
 
 const ReadPage = () => {
-  return <div>read page</div>
+  return <ReadContainer />
 }
 
 export default ReadPage

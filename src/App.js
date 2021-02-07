@@ -7,16 +7,16 @@ import './styles/index.scss'
 
 const App = () => (
   <div className="app">
-    <Header />
     <Router>
+      <Header />
       <Switch>
         <Route exact path="/" component={MainPage} />
-        <Route path="/read/:id" component={ReadPage} />
+        <Route path="/post/:id" component={ReadPage} />
         <Route path="/update/:id" component={UpdatePage} />
         <Route path="/write" component={WritePage} />
       </Switch>
+      <Footer />
     </Router>
-    <Footer />
   </div>
 )
 

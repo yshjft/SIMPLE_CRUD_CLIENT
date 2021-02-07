@@ -1,7 +1,8 @@
 import React from 'react'
+import UpdateContainer from './UpdateContainer'
 
 const UpdatePage = () => {
-  return <div>Update Page</div>
+  return <UpdateContainer />
 }
 
 export default UpdatePage
