@@ -1,11 +1,13 @@
-import React from 'react'
+import React, {forwardRef} from 'react'
+import InputForPost from '../../component/InputArea/InputArea'
 
-const UpdatePresenter = () => {
+const UpdatePresenter = forwardRef((props, ref) => {
+  const {record, handleSubmit} = props
   return (
     <div>
-      <div>update page</div>
+      <InputForPost ref={ref} record={record} handleSubmit={handleSubmit} />
     </div>
   )
-}
+})
 
 export default UpdatePresenter
