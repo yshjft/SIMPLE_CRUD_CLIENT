@@ -26,3 +26,21 @@ export async function postPosts(data) {
     throw error
   }
 }
+
+export async function putPosts(id, data) {
+  try {
+    const response = await api.put(`/posts/${id}`, data)
+    return response.data
+  } catch (error) {
+    throw error
+  }
+}
+
+export async function deletePostWithId(id) {
+  try {
+    const response = await api.delete(`/posts/${id}`)
+    return response.data
+  } catch (error) {
+    throw error
+  }
+}
