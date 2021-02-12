@@ -1,6 +1,7 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import Layout from '../../component/common/Layout'
 import ReadPresenter from '../../presenters/read'
+import {getPostWithId} from '../../api/post'
 
 const tmpPost = {
   title: '안녕하세요!!',
@@ -11,10 +12,18 @@ const tmpPost = {
 
 const ReadContainer = (props) => {
   const {id, history} = props
+  const [post, setPost] = useState({
+    title: '',
+    createdAt: '',
+    writer: '',
+    content: ''
+  })
 
   useEffect(() => {
-    tmpPost.id = id
-    // api 호출
+    ;(async () => {
+      const postDetail = await getPostWithId(id)
+      setPost(postDetail)
+    })()
   }, [id])
 
   function moveToUpdate() {
@@ -27,7 +36,7 @@ const ReadContainer = (props) => {
 
   return (
     <Layout>
-      <ReadPresenter post={tmpPost} moveToUpdate={moveToUpdate} deletePost={deletePost} />
+      <ReadPresenter post={post} moveToUpdate={moveToUpdate} deletePost={deletePost} />
     </Layout>
   )
 }

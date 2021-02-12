@@ -19,6 +19,7 @@ module.exports = {
     ],
     'no-unused-vars': 1,
     'no-param-reassign': 0,
+    'no-useless-catch': 0,
     'jsx-a11y/click-events-have-key-events': 'off',
     'jsx-a11y/no-static-element-interactions': 'off'
   }

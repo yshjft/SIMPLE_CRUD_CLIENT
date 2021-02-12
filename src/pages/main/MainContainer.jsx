@@ -1,26 +1,22 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Layout from '../../component/common/Layout'
 import MainPresenter from '../../presenters/main'
-
-const tmpAllPosts = [
-  {
-    id: 1,
-    title: '안녕하세요!',
-    writer: '개발자',
-    date: '2021.02.08'
-  },
-  {
-    id: 1,
-    title: '안녕하세요222!',
-    writer: '개발자',
-    date: '2021.02.08'
-  }
-]
+import {getPosts} from '../../api/post'
 
 const MainContainer = (props) => {
   const {history} = props
+  const [allPosts, setAllPosts] = useState()
 
-  // api 호출 등 다양한 로직 작성 (게시물 전체 조회 로직 작성)
+  useEffect(() => {
+    ;(async () => {
+      try {
+        const posts = await getPosts()
+        setAllPosts(posts)
+      } catch (error) {
+        setAllPosts([])
+      }
+    })()
+  }, [])
 
   function handleClickItem(id) {
     history.push(`/post/${id}`)
@@ -28,7 +24,7 @@ const MainContainer = (props) => {
 
   return (
     <Layout>
-      <MainPresenter allPosts={tmpAllPosts} handleClickItem={handleClickItem} />
+      <MainPresenter allPosts={allPosts} handleClickItem={handleClickItem} />
     </Layout>
   )
 }

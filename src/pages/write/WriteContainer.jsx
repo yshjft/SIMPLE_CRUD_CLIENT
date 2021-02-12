@@ -3,8 +3,11 @@ import Layout from '../../component/common/Layout'
 import WritePresenter from '../../presenters/write'
 import {resetWarning, setWarning} from '../../lib/warning'
 import {validateRequired} from '../../lib/validatior'
+import {postPosts} from '../../api/post'
 
-const WriteContainer = () => {
+const WriteContainer = (props) => {
+  const {history} = props
+
   const titleRef = useRef(null)
   const titleWarnRef = useRef(null)
   const writerRef = useRef(null)
@@ -12,7 +15,7 @@ const WriteContainer = () => {
   const contentRef = useRef(null)
   const contentWarnRef = useRef(null)
 
-  function handleSubmit(title, writer, content) {
+  async function handleSubmit(title, writer, content) {
     resetWarning(titleRef, titleWarnRef)
     resetWarning(writerRef, writerWarnRef)
     resetWarning(contentRef, contentWarnRef)
@@ -26,6 +29,13 @@ const WriteContainer = () => {
 
     // API 호출을 해야한다
     console.log(title, writer, content)
+
+    try {
+      await postPosts({title, writer, content})
+      history.push('/')
+    } catch (error) {
+      alert('failed')
+    }
   }
 
   return (

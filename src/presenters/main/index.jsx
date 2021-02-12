@@ -3,7 +3,7 @@ import PostPreview from '../../component/main/PostPreview'
 import '../../styles/index.scss'
 
 const MainPresenter = (props) => {
-  const {allPosts, handleClickItem} = props
+  const {allPosts = [], handleClickItem} = props
 
   return (
     <div className="posts">

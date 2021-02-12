@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const instance = axios.create({baseURL: 'http://localhost:8004/posts', withCredentials: true, time: 20000})
+const instance = axios.create({baseURL: '/api', withCredentials: true, time: 20000})
 
 async function errorHandler(e) {
   // eslint-disable-next-line no-console

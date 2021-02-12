@@ -7,7 +7,7 @@ const PostPreview = (props) => {
     <div onClick={() => handleClick(post.id)} className="postPreview">
       <div className="title">{post.title}</div>
       <div className="postInfo">
-        <div className="date">{post.date}</div>
+        <div className="date">{post.createdAt}</div>
         <div className="writer">{post.writer}</div>
       </div>
     </div>
