@@ -7,6 +7,7 @@ const ReadContainer = (props) => {
   const {id, history} = props
   const [post, setPost] = useState({
     title: '',
+    updatedAt: '',
     createdAt: '',
     writer: '',
     content: ''
