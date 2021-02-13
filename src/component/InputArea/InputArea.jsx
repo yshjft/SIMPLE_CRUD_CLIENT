@@ -3,9 +3,9 @@ import '../../styles/index.scss'
 
 const InputForPost = forwardRef((props, ref) => {
   const {record, handleSubmit} = props
-  const [title, setTitle] = useState()
-  const [writer, setWriter] = useState()
-  const [content, setContent] = useState()
+  const [title, setTitle] = useState('')
+  const [writer, setWriter] = useState('')
+  const [content, setContent] = useState('')
   const {titleRef, titleWarnRef, writerRef, writerWarnRef, contentRef, contentWarnRef} = ref
 
   useEffect(() => {

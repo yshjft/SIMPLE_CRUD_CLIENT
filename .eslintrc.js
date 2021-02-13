@@ -17,6 +17,7 @@ module.exports = {
         extensions: ['.js', '.jsx']
       }
     ],
+    'no-alert': 0,
     'no-unused-vars': 1,
     'no-param-reassign': 0,
     'no-useless-catch': 0,

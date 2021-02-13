@@ -27,9 +27,6 @@ const WriteContainer = (props) => {
       return
     }
 
-    // API 호출을 해야한다
-    console.log(title, writer, content)
-
     try {
       await postPosts({title, writer, content})
       history.push('/')
