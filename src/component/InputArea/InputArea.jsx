@@ -2,7 +2,7 @@ import React, {useState, forwardRef, useEffect} from 'react'
 import '../../styles/index.scss'
 
 const InputForPost = forwardRef((props, ref) => {
-  const {record, handleSubmit} = props
+  const {record, handleSubmit, handleImageUpload} = props
   const [title, setTitle] = useState('')
   const [writer, setWriter] = useState('')
   const [content, setContent] = useState('')
@@ -71,6 +71,9 @@ const InputForPost = forwardRef((props, ref) => {
         <div ref={contentWarnRef} className="warning">
           입력 미완료
         </div>
+      </div>
+      <div className="inputItem">
+        <input type="file" accept="image/jpeg, image/jpg, image/png" onChange={handleImageUpload} />
       </div>
       <button type="submit" onClick={() => handleSubmit(title, writer, content)}>
         SUBMIT

@@ -2,11 +2,11 @@ import React, {forwardRef} from 'react'
 import InputForPost from '../../component/InputArea/InputArea'
 
 const WritePresenter = forwardRef((props, ref) => {
-  const {handleSubmit} = props
+  const {handleSubmit, handleImageUpload} = props
 
   return (
     <div>
-      <InputForPost ref={ref} handleSubmit={handleSubmit} />
+      <InputForPost ref={ref} handleSubmit={handleSubmit} handleImageUpload={handleImageUpload} />
     </div>
   )
 })

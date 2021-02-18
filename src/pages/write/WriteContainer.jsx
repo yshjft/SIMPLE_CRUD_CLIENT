@@ -7,13 +7,20 @@ import {postPosts} from '../../api/post'
 
 const WriteContainer = (props) => {
   const {history} = props
-
   const titleRef = useRef(null)
   const titleWarnRef = useRef(null)
   const writerRef = useRef(null)
   const writerWarnRef = useRef(null)
   const contentRef = useRef(null)
   const contentWarnRef = useRef(null)
+
+  async function handleImageUpload(event) {
+    if (event.target.files !== null) {
+      const formData = new FormData()
+      console.log(formData)
+      console.log(event.target.files[0])
+    }
+  }
 
   async function handleSubmit(title, writer, content) {
     resetWarning(titleRef, titleWarnRef)
@@ -39,6 +46,7 @@ const WriteContainer = (props) => {
     <Layout>
       <WritePresenter
         ref={{titleRef, titleWarnRef, writerRef, writerWarnRef, contentRef, contentWarnRef}}
+        handleImageUpload={handleImageUpload}
         handleSubmit={handleSubmit}
       />
     </Layout>
