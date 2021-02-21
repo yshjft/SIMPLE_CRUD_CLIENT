@@ -1,4 +1,4 @@
-export function dateToString(createdAt, updatedAt) {
+export function dateToString(createdAt = '', updatedAt = '') {
   let time
   if (createdAt === updatedAt) {
     time = createdAt.split(' ')[0].split('-').join('.')

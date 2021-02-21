@@ -78,6 +78,16 @@ body,
       font-weight: bold;
     }
   }
+  .imgContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    img {
+      max-width: 40%;
+      object-fit: cover;
+    }
+  }
 }
 
 .inputArea {
@@ -121,39 +131,54 @@ body,
   width: 100%;
   display: flex;
   justify-content: flex-start;
-  .title {
-    margin: 10px 5px;
-    font-weight: bold;
-    font-size: 45px;
-  }
-  .info {
-    margin: 10px 5px;
-    display: flex;
-    .date {
-      margin-right: 10px;
+  .postArea {
+    width: 100%;
+
+    .title {
+      margin: 10px 5px;
       font-weight: bold;
-      color: silver;
+      font-size: 45px;
     }
-    .writer {
-      margin-right: 10px;
-      font-weight: bold;
+    .info {
+      margin: 10px 5px;
+      display: flex;
+      .date {
+        margin-right: 10px;
+        font-weight: bold;
+        color: silver;
+      }
+      .writer {
+        margin-right: 10px;
+        font-weight: bold;
+      }
     }
-  }
-  .buttons {
-    margin: 10px 5px;
-    display: flex;
-    button {
-      margin-right: 10px;
-      padding: 5px;
-      width: 90px;
-      border: none;
-      border-radius: 50px;
-      background-color: black;
-      color: white;
+    .buttons {
+      margin: 10px 5px;
+      display: flex;
+      button {
+        margin-right: 10px;
+        padding: 5px;
+        width: 90px;
+        border: none;
+        border-radius: 50px;
+        background-color: black;
+        color: white;
+      }
     }
-  }
-  pre {
-    white-space: pre-wrap;
-    font-size: 15px;
+    .imgArea {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 30px;
+      img {
+        max-width: 40%;
+        object-fit: cover;
+      }
+    }
+    pre {
+      white-space: pre-wrap;
+      font-size: 15px;
+    }
   }
 }

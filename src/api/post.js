@@ -20,6 +20,8 @@ export async function getPostWithId(id) {
 
 export async function postPosts(data) {
   try {
+    // formdata로 보낼 경우 axios의 content-type에 multipart/form-data를 반드시 추가해야한다.
+    api.defaults.headers.post['Content-Type'] = 'multipart/form-data'
     const response = await api.post('/posts', data)
     return response.data
   } catch (error) {

@@ -1,4 +1,4 @@
-import React, {useRef} from 'react'
+import React, {useRef, useState} from 'react'
 import Layout from '../../component/common/Layout'
 import WritePresenter from '../../presenters/write'
 import {resetWarning, setWarning} from '../../lib/warning'
@@ -7,6 +7,7 @@ import {postPosts} from '../../api/post'
 
 const WriteContainer = (props) => {
   const {history} = props
+  const [selectedFile, setSelectedFile] = useState(null)
   const titleRef = useRef(null)
   const titleWarnRef = useRef(null)
   const writerRef = useRef(null)
@@ -16,9 +17,7 @@ const WriteContainer = (props) => {
 
   async function handleImageUpload(event) {
     if (event.target.files !== null) {
-      const formData = new FormData()
-      console.log(formData)
-      console.log(event.target.files[0])
+      setSelectedFile(event.target.files[0])
     }
   }
 
@@ -35,7 +34,12 @@ const WriteContainer = (props) => {
     }
 
     try {
-      await postPosts({title, writer, content})
+      const formData = new FormData()
+      formData.append('title', title)
+      formData.append('writer', writer)
+      formData.append('content', content)
+      formData.append('file', selectedFile)
+      await postPosts(formData)
       history.push('/')
     } catch (error) {
       alert('failed')

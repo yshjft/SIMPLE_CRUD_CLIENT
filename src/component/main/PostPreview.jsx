@@ -11,6 +11,11 @@ const PostPreview = (props) => {
         <div className="date">{dateToString(post.createdAt, post.updatedAt)}</div>
         <div className="writer">{post.writer}</div>
       </div>
+      {post.imageUrl && (
+        <div className="imgContainer">
+          <img src={post.imageUrl} alt="post" />
+        </div>
+      )}
     </div>
   )
 }

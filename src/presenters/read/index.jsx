@@ -7,7 +7,7 @@ const ReadPresenter = (props) => {
 
   return (
     <div className="post">
-      <div>
+      <div className="postArea">
         <div className="title">{post.title}</div>
         <div className="info">
           <div className="date">{dateToString(post.createdAt, post.updatedAt)}</div>
@@ -17,6 +17,11 @@ const ReadPresenter = (props) => {
           <button onClick={moveToUpdate}>EDIT</button>
           <button onClick={deletePost}>DELETE</button>
         </div>
+        {post.imageUrl && (
+          <div className="imgArea">
+            <img src={post.imageUrl} alt="nothing" />
+          </div>
+        )}
         <pre>{post.content}</pre>
       </div>
     </div>
