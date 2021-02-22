@@ -2,11 +2,11 @@ import React, {useState, forwardRef, useEffect} from 'react'
 import '../../styles/index.scss'
 
 const InputForPost = forwardRef((props, ref) => {
-  const {record, handleSubmit, handleImageUpload} = props
+  const {record, imageUrl, handleSubmit, handleRemoveImage, handleImageUpload} = props
   const [title, setTitle] = useState('')
   const [writer, setWriter] = useState('')
   const [content, setContent] = useState('')
-  const {titleRef, titleWarnRef, writerRef, writerWarnRef, contentRef, contentWarnRef} = ref
+  const {titleRef, titleWarnRef, writerRef, writerWarnRef, contentRef, contentWarnRef, uploadRef} = ref
 
   useEffect(() => {
     if (record) {
@@ -73,9 +73,15 @@ const InputForPost = forwardRef((props, ref) => {
         </div>
       </div>
       <div className="inputItem">
-        <input type="file" accept="image/jpeg, image/jpg, image/png" onChange={handleImageUpload} />
+        <input ref={uploadRef} type="file" accept="image/jpeg, image/jpg, image/png" onChange={handleImageUpload} />
+        {imageUrl && (
+          <div>
+            <button onClick={handleRemoveImage}>X</button>
+            <img src={imageUrl} alt="nothing" />
+          </div>
+        )}
       </div>
-      <button type="submit" onClick={() => handleSubmit(title, writer, content)}>
+      <button type="submit" onClick={() => handleSubmit(title, writer, content)} className="submitButton">
         SUBMIT
       </button>
     </div>

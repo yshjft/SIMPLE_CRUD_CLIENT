@@ -8,17 +8,31 @@ import {postPosts} from '../../api/post'
 const WriteContainer = (props) => {
   const {history} = props
   const [selectedFile, setSelectedFile] = useState(null)
+  const [selectedImageUrl, setSelectedImageUrl] = useState(null)
   const titleRef = useRef(null)
   const titleWarnRef = useRef(null)
   const writerRef = useRef(null)
   const writerWarnRef = useRef(null)
   const contentRef = useRef(null)
   const contentWarnRef = useRef(null)
+  const uploadRef = useRef(null)
 
-  async function handleImageUpload(event) {
-    if (event.target.files !== null) {
-      setSelectedFile(event.target.files[0])
+  function handleImageUpload(input) {
+    if (input.target.files !== null) {
+      const reader = new FileReader()
+
+      reader.onload = (event) => {
+        setSelectedImageUrl(event.target.result)
+      }
+      reader.readAsDataURL(input.target.files[0])
+      setSelectedFile(input.target.files[0])
     }
+  }
+
+  function handleRemoveImage() {
+    uploadRef.current.value = ''
+    setSelectedFile(null)
+    setSelectedImageUrl(null)
   }
 
   async function handleSubmit(title, writer, content) {
@@ -49,8 +63,10 @@ const WriteContainer = (props) => {
   return (
     <Layout>
       <WritePresenter
-        ref={{titleRef, titleWarnRef, writerRef, writerWarnRef, contentRef, contentWarnRef}}
+        ref={{titleRef, titleWarnRef, writerRef, writerWarnRef, contentRef, contentWarnRef, uploadRef}}
+        imageUrl={selectedImageUrl}
         handleImageUpload={handleImageUpload}
+        handleRemoveImage={handleRemoveImage}
         handleSubmit={handleSubmit}
       />
     </Layout>
