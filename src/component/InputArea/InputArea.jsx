@@ -1,7 +1,7 @@
 import React, {useState, forwardRef, useEffect} from 'react'
 import '../../styles/index.scss'
 
-const InputForPost = forwardRef((props, ref) => {
+const InputArea = forwardRef((props, ref) => {
   const {record, imageUrl, handleSubmit, handleRemoveImage, handleImageUpload} = props
   const [title, setTitle] = useState('')
   const [writer, setWriter] = useState('')
@@ -92,4 +92,4 @@ const InputForPost = forwardRef((props, ref) => {
   )
 })
 
-export default InputForPost
+export default InputArea

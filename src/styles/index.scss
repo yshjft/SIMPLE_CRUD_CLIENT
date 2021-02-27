@@ -115,14 +115,13 @@ body,
       display: flex;
       justify-content: center;
       div {
+        width: 200px;
         button {
-          height: 20%;
           z-index: 1;
         }
         img {
-          height: 80%;
+          width: 100%;
           object-fit: cover;
-          z-index: 100;
         }
       }
     }

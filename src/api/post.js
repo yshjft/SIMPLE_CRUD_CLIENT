@@ -30,6 +30,7 @@ export async function postPosts(data) {
 
 export async function putPosts(id, data) {
   try {
+    api.defaults.headers.post['Content-Type'] = 'multipart/form-data'
     const response = await api.put(`/posts/${id}`, data)
     return response.data
   } catch (error) {

@@ -7,13 +7,16 @@ import {getPostWithId, putPosts} from '../../api/post'
 
 const UpdateContainer = (props) => {
   const {id, history} = props
-
+  const [imageUrl, setImageUrl] = useState(null)
+  const [selectedFile, setSelectedFile] = useState(null)
+  const [selectedImageUrl, setSelectedImageUrl] = useState(null)
   const titleRef = useRef(null)
   const titleWarnRef = useRef(null)
   const writerRef = useRef(null)
   const writerWarnRef = useRef(null)
   const contentRef = useRef(null)
   const contentWarnRef = useRef(null)
+  const uploadRef = useRef(null)
   const [record, setRecord] = useState({
     title: '',
     writer: '',
@@ -25,6 +28,10 @@ const UpdateContainer = (props) => {
     ;(async () => {
       try {
         const recordForEdit = await getPostWithId(id)
+        if (recordForEdit.imageUrl) {
+          setImageUrl(recordForEdit.imageUrl)
+          setSelectedImageUrl(recordForEdit.imageUrl)
+        }
         setRecord(recordForEdit)
       } catch (error) {
         setRecord({
@@ -35,6 +42,28 @@ const UpdateContainer = (props) => {
       }
     })()
   }, [id])
+
+  function handleImageUpload(input) {
+    if (input.target.files !== null) {
+      const reader = new FileReader()
+
+      reader.onload = (event) => {
+        setSelectedImageUrl(event.target.result)
+      }
+      if (!input.target.files[0]) {
+        setSelectedImageUrl(null)
+        return
+      }
+      reader.readAsDataURL(input.target.files[0])
+      setSelectedFile(input.target.files[0])
+    }
+  }
+
+  function handleRemoveImage() {
+    uploadRef.current.value = ''
+    setSelectedFile(null)
+    setSelectedImageUrl(null)
+  }
 
   async function handleSubmit(title, writer, content) {
     resetWarning(titleRef, titleWarnRef)
@@ -49,7 +78,14 @@ const UpdateContainer = (props) => {
     }
 
     try {
-      await putPosts(id, {title, writer, content})
+      const formData = new FormData()
+      formData.append('title', title)
+      formData.append('writer', writer)
+      formData.append('content', content)
+      formData.append('imageUrl', imageUrl)
+      formData.append('file', selectedFile)
+
+      await putPosts(id, formData)
       history.push(`/post/${id}`)
     } catch (error) {
       alert('fail')
@@ -58,8 +94,11 @@ const UpdateContainer = (props) => {
   return (
     <Layout>
       <UpdatePresenter
-        ref={{titleRef, titleWarnRef, writerRef, writerWarnRef, contentRef, contentWarnRef}}
+        ref={{titleRef, titleWarnRef, writerRef, writerWarnRef, contentRef, contentWarnRef, uploadRef}}
         record={record}
+        imageUrl={selectedImageUrl}
+        handleImageUpload={handleImageUpload}
+        handleRemoveImage={handleRemoveImage}
         handleSubmit={handleSubmit}
       />
     </Layout>
