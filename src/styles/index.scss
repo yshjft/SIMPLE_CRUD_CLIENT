@@ -110,6 +110,22 @@ body,
       resize: none;
       border: 1px solid silver;
     }
+    .showImageArea {
+      margin: 10px;
+      display: flex;
+      justify-content: center;
+      div {
+        button {
+          height: 20%;
+          z-index: 1;
+        }
+        img {
+          height: 80%;
+          object-fit: cover;
+          z-index: 100;
+        }
+      }
+    }
   }
   .submitButton {
     padding: 8px;

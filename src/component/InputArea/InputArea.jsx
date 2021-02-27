@@ -75,9 +75,13 @@ const InputForPost = forwardRef((props, ref) => {
       <div className="inputItem">
         <input ref={uploadRef} type="file" accept="image/jpeg, image/jpg, image/png" onChange={handleImageUpload} />
         {imageUrl && (
-          <div>
-            <button onClick={handleRemoveImage}>X</button>
-            <img src={imageUrl} alt="nothing" />
+          <div className="showImageArea">
+            <div>
+              <div>
+                <button onClick={handleRemoveImage}>X</button>
+              </div>
+              <img src={imageUrl} alt="nothing" />
+            </div>
           </div>
         )}
       </div>

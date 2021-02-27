@@ -24,6 +24,10 @@ const WriteContainer = (props) => {
       reader.onload = (event) => {
         setSelectedImageUrl(event.target.result)
       }
+      if (!input.target.files[0]) {
+        setSelectedImageUrl(null)
+        return
+      }
       reader.readAsDataURL(input.target.files[0])
       setSelectedFile(input.target.files[0])
     }
