@@ -7,7 +7,7 @@ import {getPostWithId, putPosts} from '../../api/post'
 
 const UpdateContainer = (props) => {
   const {id, history} = props
-  const [imageUrl, setImageUrl] = useState(null)
+  const [uploadedImageUrl, setUploadedImageUrl] = useState(null)
   const [selectedFile, setSelectedFile] = useState(null)
   const [selectedImageUrl, setSelectedImageUrl] = useState(null)
   const titleRef = useRef(null)
@@ -29,7 +29,7 @@ const UpdateContainer = (props) => {
       try {
         const recordForEdit = await getPostWithId(id)
         if (recordForEdit.imageUrl) {
-          setImageUrl(recordForEdit.imageUrl)
+          setUploadedImageUrl(recordForEdit.imageUrl)
           setSelectedImageUrl(recordForEdit.imageUrl)
         }
         setRecord(recordForEdit)
@@ -63,6 +63,7 @@ const UpdateContainer = (props) => {
     uploadRef.current.value = ''
     setSelectedFile(null)
     setSelectedImageUrl(null)
+    setUploadedImageUrl(null)
   }
 
   async function handleSubmit(title, writer, content) {
@@ -82,8 +83,8 @@ const UpdateContainer = (props) => {
       formData.append('title', title)
       formData.append('writer', writer)
       formData.append('content', content)
-      formData.append('imageUrl', imageUrl)
-      formData.append('file', selectedFile)
+      if (uploadedImageUrl) formData.append('imageUrl', uploadedImageUrl)
+      if (selectedFile) formData.append('file', selectedFile)
 
       await putPosts(id, formData)
       history.push(`/post/${id}`)
