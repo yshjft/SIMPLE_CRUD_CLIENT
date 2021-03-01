@@ -1,8 +1,11 @@
 import api from './index'
 
-export async function getPosts() {
+export async function getPosts(query = null) {
   try {
-    const response = await api.get('/posts')
+    let url = '/posts'
+    if (query != null) url += `?title=${query.title}`
+
+    const response = await api.get(url)
     return response.data
   } catch (error) {
     throw error

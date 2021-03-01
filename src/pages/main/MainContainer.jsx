@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react'
+import {debounce} from 'lodash'
 import Layout from '../../component/common/Layout'
 import MainPresenter from '../../presenters/main'
 import {getPosts} from '../../api/post'
@@ -6,6 +7,7 @@ import {getPosts} from '../../api/post'
 const MainContainer = (props) => {
   const {history} = props
   const [allPosts, setAllPosts] = useState()
+  const [titleOfPost, setTitleOfPost] = useState('')
 
   useEffect(() => {
     ;(async () => {
@@ -22,9 +24,33 @@ const MainContainer = (props) => {
     history.push(`/post/${id}`)
   }
 
+  const searchByDebounce = debounce(async (title) => {
+    const response = await getPosts({title})
+    setAllPosts(response)
+  }, 500)
+
+  function handleInputChange(e) {
+    setTitleOfPost(e.target.value)
+    searchByDebounce(e.target.value)
+  }
+
+  async function handleSearch() {
+    try {
+      const posts = await getPosts({title: titleOfPost})
+      setAllPosts(posts)
+    } catch (err) {
+      setAllPosts([])
+    }
+  }
+
   return (
     <Layout>
-      <MainPresenter allPosts={allPosts} handleClickItem={handleClickItem} />
+      <MainPresenter
+        allPosts={allPosts}
+        handleInputChange={handleInputChange}
+        handleSearch={handleSearch}
+        handleClickItem={handleClickItem}
+      />
     </Layout>
   )
 }
