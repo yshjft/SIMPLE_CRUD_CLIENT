@@ -2,15 +2,15 @@ import axios from 'axios'
 
 const instance = axios.create({baseURL: '/api', withCredentials: true, time: 20000})
 
-async function errorHandler(e) {
-  // eslint-disable-next-line no-console
-  console.log(`[Error Data]: ${JSON.stringify(e.response.data, null, 2)}`)
-  if (e.response.status === 401) {
-    window.open('/', '_self')
-  }
-  throw e
-}
-
+// async function errorHandler(e) {
+//   // eslint-disable-next-line no-console
+//   console.log(`[Error Data]: ${JSON.stringify(e.response.data, null, 2)}`)
+//   if (e.response.status === 401) {
+//     window.open('/', '_self')
+//   }
+//   throw e
+// }
+//
 // if (process.env.NODE_ENV !== 'production') {
 //   instance.interceptors.request.use(
 //     (config) => {
