@@ -178,6 +178,36 @@ eslint-plugin-import, eslint-plugin-jsx-ally, eslint-plugin-react, eslint-plugin
 
 [https://velog.io/@cookncoding/ESLint-Prettier-Airbnb-Style-Guide%EB%A1%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%84%B8%ED%8C%85%ED%95%98%EA%B8%B0] 참고
 
-## scss를 통해 스타일을 적용할 것이다.
+## scss를 이용하여 스타일 적용
 
 모듈 시스템을 적용해보려고 했지만 내 귀차니즘으로 인해 그냥 하나의 파일에 알아서 잘 작성하기로 했다.
+
+## 기능
+
+기능은 복잡하지 않다. 제목과 같이 간단하게 게시물(글 & 사진) CRUD를 구현하였다. 그리고 게시물 검색이 가능하도록 하였으며 검색에 debounce를 적용하였다.
+
+## 배포 
+
+1. 배포 도메인     
+   https://jerry-simple-crud.herokuapp.com/       
+   (일정 기간후 삭제할 거다)
+
+
+2. 배포시 겪은 어려움       
+   배포는 간단하게 하기위해서 깃허브페이지, netlify, heroku를 이용하여 배포를 시도하였다.
+   
+   - 깃허브페이지 & netlify   
+   잘못된 url로 인한 잘 못된 요청을 보내는 문제가 발생하였다. setupProxy에서 설정한 baseUrl을 사용하지 않고 아래와 같은 방식으로 잘 못된 url을 사용하여 요청을 보내고 있다. 문제는 왜 이런 문제가 발생하는지 모르겠다는 것이다.
+     
+   ```
+     ex) www.프론트 주소.com, www.백엔드 주소.com
+     정상 : www.백엔드 주소.com/api/posts
+     배포후 : www.프론트 주소.com/api/posts -> 문제 발생
+   ```
+     
+   - heroku     
+     Eslint와 prettier가 devDependency로만 설치하였는데 이게 배포 후에 문제가 되었다. 이를 해결하기 위해 devDependency로 설치 되었던 것을 모두 dependency로 설치하였다. 초기 로딩 속도가 느리긴 하지만 그외에 모든 기능은 정상적으로 작동한다.
+     
+   
+     
+     
